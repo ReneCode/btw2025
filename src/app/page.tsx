@@ -1,5 +1,4 @@
 import styles from "./page.module.css";
-import Logo from "./logo";
 import PartyOrder from "./party-order";
 
 export default function Home() {
