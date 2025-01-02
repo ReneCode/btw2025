@@ -1,0 +1,4 @@
+.partyorder {
+  display: flex;
+  flex-direction: row;
+}
