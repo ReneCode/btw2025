@@ -1,10 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
-type ResponseData = {
-  name: string;
-  vote: string;
-};
-
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     const data = [
@@ -23,6 +18,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
     res.status(200).json(data);
   } catch (err) {
-    res.status(500).json({ error: "failed to load data" });
+    res.status(500).json({ error: "failed to load data", err: err });
   }
 }
