@@ -26,10 +26,10 @@ export default function Home() {
         <div className={styles.votelist}>
           {votes.map((vote, idx) => {
             return (
-              <div className={styles.voterow} key={idx}>
-                <div>{vote.name}:</div>
-                <PartyOrder order={vote.vote} />
-              </div>
+              <>
+                <div key={idx}>{vote.name}</div>
+                <PartyOrder key={idx + 100} order={vote.vote} />
+              </>
             );
           })}
         </div>
