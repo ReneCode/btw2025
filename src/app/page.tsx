@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./page.module.css";
-import PartyOrder from "./party-order";
+import ShowVote from "./showvote";
 
 type Vote = {
   name: string;
@@ -10,29 +10,88 @@ type Vote = {
 };
 
 export default function Home() {
-  const [votes, setVotes] = useState<Vote[]>([]);
+  const [name, setName] = useState<string>("");
+  const [pw, setPw] = useState<string>("");
+  const [error, setError] = useState<string>("");
 
-  useEffect(() => {
-    fetch("/api/votes")
-      .then((res) => res.json())
-      .then((data) => setVotes(data));
-  }, []);
+  const [vote, setVote] = useState<Vote | undefined>(undefined);
+
+  const onClick = () => {
+    fetch(`/api/vote?name=${name}&pw=${pw}`)
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          return Promise.reject(res);
+        }
+      })
+      .then((data: Vote) => {
+        setVote(data);
+      })
+      .catch((_err) => {
+        setError("cant find vote");
+      });
+  };
+
+  const onChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setError("");
+    setName(e.target.value);
+  };
+
+  const onChangePw = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setError("");
+    setPw(e.target.value);
+  };
+
+  const onKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      onClick();
+    }
+  };
 
   return (
     <div className={styles.page}>
       <main className={styles.main}>
         <h2 className={styles.header}>Bundestagswahl 2025 (Vermutungen)</h2>
 
-        <div className={styles.votelist}>
-          {votes.map((vote, idx) => {
-            return (
-              <>
-                <div key={idx}>{vote.name}</div>
-                <PartyOrder key={idx + 100} order={vote.vote} />
-              </>
-            );
-          })}
-        </div>
+        {!vote && (
+          <>
+            <div className={styles.loginform}>
+              <label className={styles.label} htmlFor="name">
+                Name
+              </label>
+              <input
+                className={styles.input}
+                type="text"
+                id="name"
+                name="name"
+                value={name}
+                onChange={onChangeName}
+                onKeyDown={onKeyDown}
+                required
+              />
+              <label className={styles.label} htmlFor="pw">
+                Passwort
+              </label>
+              <input
+                placeholder="dd.mm.yy"
+                className={styles.input}
+                type="password"
+                id="pw"
+                name="pw"
+                value={pw}
+                onChange={onChangePw}
+                onKeyDown={onKeyDown}
+              />
+              <button className={styles.btn} onClick={onClick}>
+                Login
+              </button>
+              <div className={styles.error}>{error}</div>
+            </div>
+          </>
+        )}
+
+        {vote && <ShowVote vote={vote}></ShowVote>}
       </main>
     </div>
   );
