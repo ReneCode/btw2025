@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import styles from "./page.module.css";
-import ShowVote from "./showvote";
+import ShowVotes from "./showvotes";
 
 type Vote = {
   name: string;
@@ -14,7 +14,7 @@ export default function Home() {
   const [pw, setPw] = useState<string>("");
   const [error, setError] = useState<string>("");
 
-  const [vote, setVote] = useState<Vote | undefined>(undefined);
+  const [votes, setVotes] = useState<Vote[]>([]);
 
   const onClick = () => {
     fetch(`/api/vote?name=${name}&pw=${pw}`)
@@ -25,8 +25,8 @@ export default function Home() {
           return Promise.reject(res);
         }
       })
-      .then((data: Vote) => {
-        setVote(data);
+      .then((data: Vote[]) => {
+        setVotes(data);
       })
       .catch((_err) => {
         setError("cant find vote");
@@ -54,7 +54,7 @@ export default function Home() {
       <main className={styles.main}>
         <h2 className={styles.header}>Bundestagswahl 2025 (Vermutungen)</h2>
 
-        {!vote && (
+        {votes.length === 0 && (
           <>
             <div className={styles.loginform}>
               <label className={styles.label} htmlFor="name">
@@ -91,7 +91,7 @@ export default function Home() {
           </>
         )}
 
-        {vote && <ShowVote vote={vote}></ShowVote>}
+        {votes.length > 0 && <ShowVotes votes={votes}></ShowVotes>}
       </main>
     </div>
   );

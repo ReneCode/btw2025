@@ -1,0 +1,18 @@
+.vote {
+  display: block;
+}
+
+.name {
+  margin: 1rem;
+}
+
+.me {
+  padding: 3px;
+  border: 1px solid black;
+  background-color: gray;
+}
+
+.other {
+  padding: 3px;
+  border: 1px solid transparent;
+}
