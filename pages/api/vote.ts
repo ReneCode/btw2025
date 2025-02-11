@@ -23,6 +23,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     { name: "sarah", pw: "", vote: "CSABGLF" },
     { name: "merle", pw: "", vote: "CASGBFL" },
     { name: "stani", pw: "", vote: "CALSGBF" },
+    { name: "talli", pw: "", vote: "CASGLFB" },
   ];
 
   const result = data.map((d) => {
