@@ -10,7 +10,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const { name, pw } = req.query;
 
   const data: VoteData[] = [
-    { name: "rene", pw: "19.12.64", vote: "CSAG" },
+    { name: "rene", pw: "19.12.64", vote: "CSAGLFB" },
     { name: "karo", pw: "31.01.99", vote: "CAGS" },
     { name: "koni", pw: "20.09.00", vote: "CASGBFL" },
     { name: "molli", pw: "", vote: "CASGBFL" },
@@ -19,7 +19,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     { name: "volker", pw: "", vote: "CSAGLBF" },
     { name: "ulla", pw: "", vote: "CSAGLBF" },
     { name: "heide", pw: "17.08.63", vote: "CASGBFL" },
-    { name: "melli", pw: "", vote: "CASG" },
+    { name: "melli", pw: "", vote: "CASGLFB" },
     { name: "sarah", pw: "", vote: "CSABGLF" },
     { name: "merle", pw: "", vote: "CASGBFL" },
     { name: "stani", pw: "", vote: "CALSGBF" },
