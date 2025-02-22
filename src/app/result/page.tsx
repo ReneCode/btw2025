@@ -37,7 +37,7 @@ export default async function Result() {
 
 async function getLeaderboard(outcome: string) {
   console.log(process.env.URL);
-  console.log(process.env.PROD_URL);
+  console.log(process.env.VERCEL_URL);
 
   let url = "http://localhost:3000";
   if (process.env.VERCEL_URL) {
@@ -45,6 +45,7 @@ async function getLeaderboard(outcome: string) {
   }
 
   const res = await fetch(`${url}/api/leaderboard?outcome=${outcome}`);
+  console.log("Res:", res);
   const leaderboard: Leaderboard[] = await res.json();
 
   return leaderboard;
