@@ -4,11 +4,7 @@ import { Leaderboard } from "../types";
 import PartyOrder from "../party-order";
 
 import styles from "./styles.module.css";
-import { use, useEffect, useState } from "react";
-
-interface ResultProps {
-  leaderboard: Leaderboard[];
-}
+import { useEffect, useState } from "react";
 
 export default function Result() {
   const finalResult = "CAGSLBF";
