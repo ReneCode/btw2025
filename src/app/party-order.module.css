@@ -6,3 +6,12 @@
 .partylogo {
   max-height: 41px;
 }
+
+.votebad {
+  opacity: 0.3;
+  max-height: 41px;
+}
+
+.votecorrect {
+  max-height: 41px;
+}

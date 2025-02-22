@@ -3,11 +3,7 @@
 import { useState } from "react";
 import styles from "./page.module.css";
 import ShowVotes from "./showvotes";
-
-type Vote = {
-  name: string;
-  vote: string;
-};
+import { Vote } from "./types";
 
 export default function Home() {
   const [name, setName] = useState<string>("");
