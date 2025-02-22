@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   env: {
-    URL: process.env.URL || "http://localhost:3000",
+    URL: process.env.VERCEL_URL || "http://localhost:3000",
   },
 };
 
