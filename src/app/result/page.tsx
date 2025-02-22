@@ -3,10 +3,6 @@ import PartyOrder from "../party-order";
 
 import styles from "./styles.module.css";
 
-interface ResultProps {
-  leaderboard: [];
-}
-
 export default async function Result() {
   const finalResult = "CAGSLBF";
   const leaderboard = await getLeaderboard(finalResult);
