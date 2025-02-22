@@ -7,6 +7,10 @@ export default async function Result() {
   const finalResult = "CAGSLBF";
   const leaderboard = await getLeaderboard(finalResult);
 
+  if (!leaderboard) {
+    return <div>loading...</div>;
+  }
+
   return (
     <div className={styles.result}>
       <div></div>
