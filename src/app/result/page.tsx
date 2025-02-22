@@ -37,7 +37,7 @@ export default async function Result() {
 
 async function getLeaderboard(outcome: string) {
   const res = await fetch(
-    `http://localhost:3000/api/leaderboard?outcome=${outcome}`
+    `${process.env.URL}/api/leaderboard?outcome=${outcome}`
   );
   const leaderboard: Leaderboard[] = await res.json();
 
