@@ -1,11 +1,25 @@
+"use client";
+
 import { Leaderboard } from "../types";
 import PartyOrder from "../party-order";
 
 import styles from "./styles.module.css";
+import { use, useEffect, useState } from "react";
 
-export default async function Result() {
+interface ResultProps {
+  leaderboard: Leaderboard[];
+}
+
+export default function Result() {
   const finalResult = "CAGSLBF";
-  const leaderboard = await getLeaderboard(finalResult);
+
+  const [leaderboard, setLeaderboard] = useState<Leaderboard[]>([]);
+
+  useEffect(() => {
+    getLeaderboard(finalResult).then((data) => {
+      setLeaderboard(data);
+    });
+  }, []);
 
   if (!leaderboard) {
     return <div>loading...</div>;
