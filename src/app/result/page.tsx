@@ -7,7 +7,7 @@ import styles from "./styles.module.css";
 import { useEffect, useState } from "react";
 
 export default function Result() {
-  const finalResult = "CASGLFB";
+  const finalResult = "CASGLBF";
 
   const [leaderboard, setLeaderboard] = useState<Leaderboard[]>([]);
 
