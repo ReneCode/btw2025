@@ -4,6 +4,7 @@ import { useState } from "react";
 import styles from "./page.module.css";
 import ShowVotes from "./showvotes";
 import { Vote } from "./types";
+import { redirect } from "next/navigation";
 
 export default function Home() {
   const [name, setName] = useState<string>("");
@@ -44,6 +45,8 @@ export default function Home() {
       onClick();
     }
   };
+
+  redirect("/result");
 
   return (
     <div className={styles.page}>
